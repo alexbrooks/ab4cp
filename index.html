@@ -41,6 +41,16 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- GoSquared Analytics -->
+    <script>
+      !function(g,s,q,r,d){r=g[r]=g[r]||function(){(r.q=r.q||[]).push(arguments)};
+      d=s.createElement(q);d.src='//d1l6p2sc9645hc.cloudfront.net/gosquared.js';q=
+      s.getElementsByTagName(q)[0];q.parentNode.insertBefore(d,q)}(window,document
+      ,'script','_gs');
+
+      _gs('GSN-140714-N');
+    </script>
 </head>
 <body>
     <div class="page-background">
@@ -51,7 +61,13 @@
                     <img src="images/header-photo.jpg" alt="Alex Brooks with fellow councillor candidates in Crofton Park" class="header-photo">
                 </div>
                 <h1>Alex Brooks</h1>
-                <p class="subtitle">Lewisham Labour Candidate for Crofton Park</p>
+                <p class="subtitle">
+                    <span class="subtitle-part">Crofton Park</span>
+                    <span class="subtitle-separator">•</span>
+                    <span class="subtitle-part">Lewisham Labour</span>
+                    <span class="subtitle-separator">•</span>
+                    <span class="subtitle-part">May 7, 2026</span>
+                </p>
                 <p class="bio">I'm standing to be your councillor for Crofton Park ward because I believe that strong Labour councillors provide opportunities to change people's live for the better. Ahead of the elections on May 7, 2026 I want to hear from you about what matters most in our area.</p>
             </header>
 
@@ -68,102 +84,90 @@
                 </div>
             </div>
 
-            <!-- Accordion Sections -->
-            <div class="accordion">
-                <!-- About Me -->
-                <div class="accordion-item">
-                    <button class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>About me</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="content-inner">
-                            <p>I know the difference a Labour government makes. Growing up in Corby, a town devastated by the closure of the steelworks, I saw how a Labour government rebuilt lives by investing in schools, reconnecting us with a long-awaited train station, and suporting families in need. That opportunity meant I became the first in my family to go to university, where I served two terms as Students' Union President at the University of Greenwich, representing 30,000 students across the South East.</p>
-                            
-                            <p>Those same values of fairness and opportunity drive me now in Lewisham. Outside of work and the Party, I volunteer as Vice-Chair with a Ladywell-based housing and grant giving charity that provides homes for those in need later in life.</p>
-                            
-                            <p>Standing to be your Crofton Park councillor brings together professional experience and grassroots commitment to campaigning and community service that will deliver results for the people of Crofton Park.</p>
-                        </div>
-                    </div>
+            <!-- About Me Section -->
+            <section class="page-section">
+                <div class="section-header">
+                    <h2>About me</h2>
                 </div>
+                <div class="content-inner">
+                    <p>I know the difference a Labour government makes. Growing up in Corby, a town devastated by the closure of the steelworks, I saw how a Labour government rebuilt lives by investing in schools, reconnecting us with a long-awaited train station, and suporting families in need. That opportunity meant I became the first in my family to go to university, where I served two terms as Students' Union President at the University of Greenwich, representing 30,000 students across the South East.</p>
+                    
+                    <p>Those same values of fairness and opportunity drive me now in Lewisham. Outside of work and the Party, I volunteer as Vice-Chair with a Ladywell-based housing and grant giving charity that provides homes for those in need later in life.</p>
+                    
+                    <p>Standing to be your Crofton Park councillor brings together professional experience and grassroots commitment to campaigning and community service that will deliver results for the people of Crofton Park.</p>
+                </div>
+            </section>
 
-                <!-- My Priorities -->
-                <div class="accordion-item">
-                    <button class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>My priorities for Crofton Park</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="content-inner">
-                            <p><strong>My commitment to you in Crofton Park:</strong></p>
-                            <ul class="priorities-list">
-                                <li><strong>Accessible and accountable:</strong> I will be an active Crofton Park councillor. I will be visible, present, and responsive to residents.</li>
-                                <li><strong>Focused on local priorities:</strong> I will build on the work of your outgoing councillors by improving road safety, tackling fly-tipping and street cleanliness, and working with police and council officers to reduce crime, speeding and antisocial behaviour.</li>
-                            </ul>
-                            
-                            <p class="priorities-section-header"><strong>My commitment to the people of Lewisham:</strong></p>
-                            <ul class="priorities-list">
-                                <li><strong>Housing:</strong> Champion genuinely affordable homes for low-income families, while also pushing for home ownership accelerators and intermediate rent schemes so working families can build a future in Lewisham.</li>
-                                <li><strong>Cleaner, safer streets:</strong> Tackle fly-tipping head-on with stronger enforcement, better waste services, and community partnerships. Clean streets and pride in our borough are the basics we all deserve.</li>
-                                <li><strong>Fair funding for Lewisham:</strong> Lead the case for a fair deal from central government so we can preserve essential services, rebuild those that have been cut, and invest confidently in Lewisham's future.</li>
-                            </ul>
-                        </div>
-                    </div>
+            <!-- My Priorities Section -->
+            <section class="page-section">
+                <div class="section-header">
+                    <h2>My priorities for Crofton Park</h2>
                 </div>
+                <div class="content-inner">
+                    <p><strong>My commitment to you in Crofton Park:</strong></p>
+                    <ul class="priorities-list">
+                        <li><strong>Accessible and accountable:</strong> I will be an active Crofton Park councillor. I will be visible, present, and responsive to residents.</li>
+                        <li><strong>Focused on local priorities:</strong> I will build on the work of your outgoing councillors by improving road safety, tackling fly-tipping and street cleanliness, and working with police and council officers to reduce crime, speeding and antisocial behaviour.</li>
+                    </ul>
+                    
+                    <p class="priorities-section-header"><strong>My commitment to the people of Lewisham:</strong></p>
+                    <ul class="priorities-list">
+                        <li><strong>Housing:</strong> Champion genuinely affordable homes for low-income families, while also pushing for home ownership accelerators and intermediate rent schemes so working families can build a future in Lewisham.</li>
+                        <li><strong>Cleaner, safer streets:</strong> Tackle fly-tipping head-on with stronger enforcement, better waste services, and community partnerships. Clean streets and pride in our borough are the basics we all deserve.</li>
+                        <li><strong>Fair funding for Lewisham:</strong> Lead the case for a fair deal from central government so we can preserve essential services, rebuild those that have been cut, and invest confidently in Lewisham's future.</li>
+                    </ul>
+                </div>
+            </section>
 
-                <!-- Get In Touch with Priorities -->
-                <div class="accordion-item">
-                    <button class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>Tell me your priorities:</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="content-inner">
-                            <p class="casework-notice">Please note: I cannot accept casework through this form. For casework matters, please contact the current <a href="https://lewisham.gov.uk/inmyarea/neighbourhoods/croftonpark" target="_blank" rel="noopener noreferrer">sitting councillors</a> for Crofton Park.</p>
-                            
-                            <p style="margin-top: 1.5rem; margin-bottom: 1rem;"><strong>What matters most to you in Crofton Park?</strong> Select your top 3 priorities and complete the form to tell me what you think:</p>
-                            
-                            <div class="priority-cloud" id="priorityCloud">
-                                <!-- Priorities will be dynamically loaded here -->
-                            </div>
-                            
-                            <p class="selection-count">You've selected <span id="selectedCount">0</span> of 3 priorities</p>
-                            
-                            <form action="https://formspree.io/f/mqagbzeb" method="POST" class="contact-form" id="contactForm">
-                                <!-- Hidden fields for selected priorities - will be populated dynamically -->
-                                <div id="priorityFields"></div>
-                                
-                                <div class="form-group">
-                                    <label for="name">Name *</label>
-                                    <input type="text" id="name" name="name" required>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="email">Email *</label>
-                                    <input type="email" id="email" name="email" required>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="street">Street Name</label>
-                                    <input type="text" id="street" name="street">
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="subject">Subject *</label>
-                                    <input type="text" id="subject" name="subject" required>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="message">Message *</label>
-                                    <textarea id="message" name="message" rows="5" required></textarea>
-                                </div>
-                                
-                                <button type="submit" class="submit-btn">Send Message</button>
-                            </form>
-                        </div>
-                    </div>
+            <!-- Tell Me Your Priorities Section -->
+            <section class="page-section">
+                <div class="section-header">
+                    <h2>Tell me your priorities</h2>
                 </div>
-            </div>
+                <div class="content-inner">
+                    <p class="casework-notice">Please note: I cannot accept casework through this form. For casework matters, please contact the current <a href="https://lewisham.gov.uk/inmyarea/neighbourhoods/croftonpark" target="_blank" rel="noopener noreferrer">sitting councillors</a> for Crofton Park.</p>
+                    
+                    <p style="margin-top: 1.5rem; margin-bottom: 1rem;"><strong>What matters most to you in Crofton Park?</strong> Select your top 3 priorities and complete the form to tell me what you think:</p>
+                    
+                    <div class="priority-cloud" id="priorityCloud">
+                        <!-- Priorities will be dynamically loaded here -->
+                    </div>
+                    
+                    <p class="selection-count">You've selected <span id="selectedCount">0</span> of 3 priorities</p>
+                    
+                    <form action="https://formspree.io/f/mqagbzeb" method="POST" class="contact-form" id="contactForm">
+                        <!-- Hidden fields for selected priorities - will be populated dynamically -->
+                        <div id="priorityFields"></div>
+                        
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="street">Street Name</label>
+                            <input type="text" id="street" name="street">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </section>
 
             <!-- Footer -->
             <footer class="footer">
@@ -302,32 +306,6 @@
         
         // Initialize on page load
         window.addEventListener('DOMContentLoaded', initPriorityCloud);
-        
-        function toggleAccordion(button) {
-            const item = button.parentElement;
-            const content = button.nextElementSibling;
-            const icon = button.querySelector('i');
-            
-            // Close all other accordion items
-            document.querySelectorAll('.accordion-item').forEach(otherItem => {
-                if (otherItem !== item && otherItem.classList.contains('active')) {
-                    otherItem.classList.remove('active');
-                    otherItem.querySelector('.accordion-content').style.maxHeight = null;
-                    otherItem.querySelector('i').style.transform = 'rotate(0deg)';
-                }
-            });
-            
-            // Toggle current item
-            item.classList.toggle('active');
-            
-            if (item.classList.contains('active')) {
-                content.style.maxHeight = content.scrollHeight + 'px';
-                icon.style.transform = 'rotate(180deg)';
-            } else {
-                content.style.maxHeight = null;
-                icon.style.transform = 'rotate(0deg)';
-            }
-        }
     </script>
 </body>
 </html>
