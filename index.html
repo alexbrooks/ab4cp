@@ -73,7 +73,7 @@
                 <!-- About Me -->
                 <div class="accordion-item">
                     <button class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>About Me</span>
+                        <span>About me</span>
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="accordion-content">
@@ -90,7 +90,7 @@
                 <!-- My Priorities -->
                 <div class="accordion-item">
                     <button class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>My Priorities for Crofton Park</span>
+                        <span>My priorities for Crofton Park</span>
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="accordion-content">
@@ -111,37 +111,28 @@
                     </div>
                 </div>
 
-                <!-- Your Priorities -->
+                <!-- Get In Touch with Priorities -->
                 <div class="accordion-item">
                     <button class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>Your Priorities</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="content-inner">
-                            <p>What matters most to you in Crofton Park? Select your top 3 priorities:</p>
-                            
-                            <div class="priority-cloud" id="priorityCloud">
-                                <!-- Priorities will be dynamically loaded here -->
-                            </div>
-                            
-                            <p class="selection-count">You've selected <span id="selectedCount">0</span> of 3 priorities</p>
-                            <p class="priorities-note">Priorities from others across the ward also shown.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Contact Form -->
-                <div class="accordion-item">
-                    <button class="accordion-header" onclick="toggleAccordion(this)">
-                        <span>Get In Touch</span>
+                        <span>Tell me your priorities:</span>
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="accordion-content">
                         <div class="content-inner">
                             <p class="casework-notice">Please note: I cannot accept casework through this form. For casework matters, please contact the current <a href="https://lewisham.gov.uk/inmyarea/neighbourhoods/croftonpark" target="_blank" rel="noopener noreferrer">sitting councillors</a> for Crofton Park.</p>
                             
-                            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form">
+                            <p style="margin-top: 1.5rem; margin-bottom: 1rem;"><strong>What matters most to you in Crofton Park?</strong> Select your top 3 priorities and complete the form to tell me what you think:</p>
+                            
+                            <div class="priority-cloud" id="priorityCloud">
+                                <!-- Priorities will be dynamically loaded here -->
+                            </div>
+                            
+                            <p class="selection-count">You've selected <span id="selectedCount">0</span> of 3 priorities</p>
+                            
+                            <form action="https://formspree.io/f/mqagbzeb" method="POST" class="contact-form" id="contactForm">
+                                <!-- Hidden fields for selected priorities - will be populated dynamically -->
+                                <div id="priorityFields"></div>
+                                
                                 <div class="form-group">
                                     <label for="name">Name *</label>
                                     <input type="text" id="name" name="name" required>
@@ -202,32 +193,26 @@
         ];
         
         let selectedPriorities = [];
-        let priorityCounts = {};
         
         // Initialize priority cloud
-        async function initPriorityCloud() {
+        function initPriorityCloud() {
             const cloud = document.getElementById('priorityCloud');
             
-            // Load counts and user selections
-            await loadPriorityCounts();
+            // Load user selections
             loadUserSelections();
             
-            // Create priority bubbles
+            // Create priority bubbles (without counts)
             priorities.forEach(priority => {
                 const bubble = document.createElement('button');
                 bubble.className = 'priority-bubble';
                 bubble.setAttribute('data-id', priority.id);
+                bubble.type = 'button'; // Prevent form submission
                 
                 const label = document.createElement('span');
                 label.className = 'priority-label';
                 label.textContent = priority.label;
                 
-                const count = document.createElement('span');
-                count.className = 'priority-count';
-                count.textContent = priorityCounts[priority.id] || 0;
-                
                 bubble.appendChild(label);
-                bubble.appendChild(count);
                 bubble.onclick = () => togglePriority(priority.id);
                 
                 if (selectedPriorities.includes(priority.id)) {
@@ -238,24 +223,7 @@
             });
             
             updateSelectionCount();
-        }
-        
-        // Load priority counts from storage
-        async function loadPriorityCounts() {
-            try {
-                const result = await window.storage.get('priority-counts', true);
-                if (result && result.value) {
-                    priorityCounts = JSON.parse(result.value);
-                } else {
-                    // Initialize counts
-                    priorityCounts = {};
-                    priorities.forEach(p => priorityCounts[p.id] = 0);
-                }
-            } catch (error) {
-                console.log('Initializing priority counts');
-                priorityCounts = {};
-                priorities.forEach(p => priorityCounts[p.id] = 0);
-            }
+            updatePriorityFields();
         }
         
         // Load user selections from cookie
@@ -282,7 +250,7 @@
         }
         
         // Toggle priority selection
-        async function togglePriority(id) {
+        function togglePriority(id) {
             const bubble = document.querySelector(`[data-id="${id}"]`);
             const wasSelected = selectedPriorities.includes(id);
             
@@ -290,7 +258,6 @@
                 // Deselect
                 selectedPriorities = selectedPriorities.filter(p => p !== id);
                 bubble.classList.remove('selected');
-                await decrementCount(id);
             } else {
                 // Select (max 3)
                 if (selectedPriorities.length >= 3) {
@@ -298,44 +265,33 @@
                     const removed = selectedPriorities.shift();
                     const removedBubble = document.querySelector(`[data-id="${removed}"]`);
                     removedBubble.classList.remove('selected');
-                    await decrementCount(removed);
                 }
                 selectedPriorities.push(id);
                 bubble.classList.add('selected');
-                await incrementCount(id);
             }
             
             saveUserSelections();
             updateSelectionCount();
+            updatePriorityFields();
         }
         
-        // Increment global count
-        async function incrementCount(id) {
-            priorityCounts[id] = (priorityCounts[id] || 0) + 1;
-            updateBubbleCount(id);
-            await saveCounts();
-        }
-        
-        // Decrement global count
-        async function decrementCount(id) {
-            priorityCounts[id] = Math.max(0, (priorityCounts[id] || 0) - 1);
-            updateBubbleCount(id);
-            await saveCounts();
-        }
-        
-        // Update bubble count display
-        function updateBubbleCount(id) {
-            const bubble = document.querySelector(`[data-id="${id}"]`);
-            const countSpan = bubble.querySelector('.priority-count');
-            countSpan.textContent = priorityCounts[id];
-        }
-        
-        // Save counts to storage
-        async function saveCounts() {
-            try {
-                await window.storage.set('priority-counts', JSON.stringify(priorityCounts), true);
-            } catch (error) {
-                console.error('Error saving counts:', error);
+        // Update hidden form fields with selected priorities
+        function updatePriorityFields() {
+            const priorityFieldsContainer = document.getElementById('priorityFields');
+            priorityFieldsContainer.innerHTML = ''; // Clear existing fields
+            
+            if (selectedPriorities.length > 0) {
+                // Create a hidden field with all selected priorities as a formatted list
+                const priorityList = selectedPriorities.map(id => {
+                    const priority = priorities.find(p => p.id === id);
+                    return priority ? priority.label : id;
+                });
+                
+                const prioritiesInput = document.createElement('input');
+                prioritiesInput.type = 'hidden';
+                prioritiesInput.name = 'Selected Priorities';
+                prioritiesInput.value = priorityList.join(', ');
+                priorityFieldsContainer.appendChild(prioritiesInput);
             }
         }
         
