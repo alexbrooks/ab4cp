@@ -245,6 +245,8 @@ body {
     line-height: 1.7;
     font-size: 1rem;
     border-bottom: 2px solid rgba(228, 0, 59, 0.1);
+    color: var(--text-primary);
+    transition: color 0.3s ease;
 }
 
 .priorities-list li:last-child {
@@ -343,6 +345,34 @@ body {
 .form-group textarea:focus {
     outline: none;
     border-color: var(--labour-red);
+}
+
+.checkbox-group {
+    margin-bottom: 2rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    cursor: pointer;
+    font-weight: 400;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: auto;
+    min-width: 20px;
+    height: 20px;
+    margin-top: 0.15rem;
+    cursor: pointer;
+    accent-color: var(--labour-red);
+}
+
+.checkbox-text {
+    color: var(--text-primary);
+    font-size: 1rem;
+    line-height: 1.6;
+    transition: color 0.3s ease;
 }
 
 .submit-btn {
