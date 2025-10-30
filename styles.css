@@ -125,10 +125,14 @@ body {
 .bio {
     font-size: 1rem;
     line-height: 1.7;
-    color: var(--text-secondary);
-    max-width: 700px;
-    margin: 0 auto;
+    color: var(--text-primary);
+    max-width: 620px;
+    margin: 0.75rem auto 0;
     transition: color 0.3s ease;
+}
+
+.bio p {
+    color: inherit;
 }
 
 /* Contact Section */
