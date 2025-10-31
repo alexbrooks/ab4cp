@@ -439,6 +439,7 @@ body {
     transition: all 0.3s ease;
     font-family: inherit;
     min-width: 90px;
+    color: var(--text-primary);
 }
 
 .priority-bubble:hover {
@@ -487,6 +488,7 @@ body {
 @media (prefers-color-scheme: dark) {
     .priority-bubble {
         background-color: rgba(228, 0, 59, 0.15);
+        color: var(--text-primary);
     }
     
     .priority-bubble:hover {
