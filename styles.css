@@ -395,8 +395,8 @@ body {
 }
 
 .submit-btn {
-    width: 100%;
-    padding: 1.25rem;
+    width: auto;
+    padding: 1.25rem 3rem;
     background-color: var(--labour-red);
     color: var(--labour-light);
     border: none;
@@ -407,6 +407,8 @@ body {
     transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 1px;
+    display: block;
+    margin: 0 auto;
 }
 
 .submit-btn:hover {
