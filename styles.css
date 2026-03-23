@@ -411,6 +411,18 @@ body {
     margin: 0 auto;
 }
 
+.manifesto-button-container {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.manifesto-btn {
+    width: min(50%, 320px);
+    min-width: 220px;
+    text-decoration: none;
+    text-transform: none;
+}
+
 .submit-btn:hover {
     background-color: var(--labour-dark-red);
     transform: translateY(-3px);
