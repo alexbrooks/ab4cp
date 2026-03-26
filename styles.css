@@ -423,6 +423,23 @@ body {
     text-transform: none;
 }
 
+.manifesto-secondary-link {
+    margin: 1rem auto 0;
+    max-width: 34rem;
+    color: var(--text-primary);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.manifesto-secondary-link a {
+    color: var(--labour-red);
+    font-weight: 700;
+}
+
+.manifesto-secondary-link a:hover {
+    color: var(--labour-dark-red);
+}
+
 .submit-btn:hover {
     background-color: var(--labour-dark-red);
     transform: translateY(-3px);
