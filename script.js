@@ -41,6 +41,7 @@ function initPriorityCloud() {
         const bubble = document.createElement('button');
         bubble.className = 'priority-bubble';
         bubble.setAttribute('data-id', priority.id);
+        bubble.setAttribute('aria-pressed', selectedPriorities.includes(priority.id));
         bubble.type = 'button';
 
         const label = document.createElement('span');
@@ -87,14 +88,19 @@ function togglePriority(id) {
     if (wasSelected) {
         selectedPriorities = selectedPriorities.filter(p => p !== id);
         bubble.classList.remove('selected');
+        bubble.setAttribute('aria-pressed', 'false');
     } else {
         if (selectedPriorities.length >= 3) {
             const removed = selectedPriorities.shift();
             const removedBubble = document.querySelector(`[data-id="${removed}"]`);
-            if (removedBubble) removedBubble.classList.remove('selected');
+            if (removedBubble) {
+                removedBubble.classList.remove('selected');
+                removedBubble.setAttribute('aria-pressed', 'false');
+            }
         }
         selectedPriorities.push(id);
         bubble.classList.add('selected');
+        bubble.setAttribute('aria-pressed', 'true');
     }
 
     saveUserSelections();

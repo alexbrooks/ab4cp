@@ -43,21 +43,6 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-  <noscript>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  </noscript>
-
-  <!-- GoSquared Analytics -->
-  <script>
-    !function (g, s, q, r, d) {
-      r = g[r] = g[r] || function () { (r.q = r.q || []).push(arguments) };
-      d = s.createElement(q); d.src = '//d1l6p2sc9645hc.cloudfront.net/gosquared.js'; q =
-        s.getElementsByTagName(q)[0]; q.parentNode.insertBefore(d, q)
-    }(window, document, 'script', '_gs');
-
-    _gs('GSN-140714-N');
-  </script>
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -82,12 +67,6 @@
     }
   </script>
 
-  <style>
-    .holding-card img{width:320px;height:320px;object-fit:cover;border-radius:50%;border:4px solid var(--labour-red);} 
-    .hero-photo { width: 320px; height: 320px; border-radius: 50%; object-fit: cover; border: 4px solid var(--labour-red); }
-    .details-bar { font-weight:600;color:var(--labour-red);margin-top:0.5rem }
-    .email-btn { background:var(--labour-red); color:var(--labour-light); padding:0.6rem 1rem; border-radius:6px; text-decoration:none; font-weight:700 }
-  </style>
 </head>
 <body>
   <div class="page-background">
@@ -96,7 +75,16 @@
       <!-- Header / Hero -->
       <header class="profile-header">
         <div class="header-photo-container">
-          <img src="images/profile.webp" alt="Alex Brooks" class="hero-photo">
+          <img
+            src="images/profile-320.jpg"
+            srcset="images/profile-320.jpg 320w, images/profile-640.jpg 640w"
+            sizes="320px"
+            width="320"
+            height="320"
+            alt="Alex Brooks"
+            class="hero-photo"
+            fetchpriority="high"
+            decoding="async">
         </div>
         <h1>Alex Brooks - Crofton Park Labour candidate</h1>
         <p class="subtitle">
@@ -111,17 +99,28 @@
         </div>
       </header>
 
-      <!-- Contact Bar -->
-      <section class="contact-section">
-        <p class="contact-text">Get in touch using the contact form below or follow me</p>
-        <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
-          <div class="social-links" aria-label="Social links">
-            <a class="social-link" href="https://facebook.com/LabourBrooks" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-            <a class="social-link" href="https://instagram.com/LabourBrooks" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <main>
+        <!-- Contact Bar -->
+        <section class="contact-section">
+          <p class="contact-text">Get in touch using the contact form below or follow me</p>
+          <div class="contact-actions">
+            <div class="social-links" aria-label="Social links">
+              <a class="social-link" href="https://facebook.com/LabourBrooks" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M14 8h3V4h-3c-3.3 0-5 2-5 5v2H6v4h3v9h4v-9h3.5l.5-4h-4V9c0-.7.3-1 1-1Z"/>
+                </svg>
+              </a>
+              <a class="social-link" href="https://instagram.com/LabourBrooks" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
+                  <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+                  <circle cx="17.5" cy="6.5" r="1.25"/>
+                </svg>
+              </a>
+            </div>
+            <a class="email-btn" href="mailto:alex.brooks@lewisham.org.uk">alex.brooks@lewisham.org.uk</a>
           </div>
-          <a class="email-btn" href="mailto:alex.brooks@lewisham.org.uk">alex.brooks@lewisham.org.uk</a>
-        </div>
-      </section>
+        </section>
 
       <!-- About Me -->
       <section class="page-section" id="about">
@@ -161,7 +160,7 @@
         <div class="content-inner">
           <p class="casework-notice">Please note: I cannot accept casework through this form. For casework matters, please contact the current <a href="https://lewisham.gov.uk/inmyarea/neighbourhoods/croftonpark" target="_blank" rel="noopener noreferrer">sitting councillors</a> for Crofton Park.</p>
 
-          <p style="margin-top:1.5rem;margin-bottom:1rem;"><strong>What matters most to you in Crofton Park?</strong> Select your top 3 priorities and complete the form to tell me what you think:</p>
+          <p class="priorities-intro"><strong>What matters most to you in Crofton Park?</strong> Select your top 3 priorities and complete the form to tell me what you think:</p>
 
           <div class="priority-cloud" id="priorityCloud"></div>
           <p class="selection-count">You've selected <span id="selectedCount">0</span> of 3 priorities</p>
@@ -205,6 +204,7 @@
           </form>
         </div>
       </section>
+      </main>
 
       <footer class="footer">
         <p>Promoted by Robert Williams on behalf of Alex Brooks both at 43 Sunderland Road,
@@ -215,5 +215,18 @@ London, SE23 2PS.</p>
   </div>
 
   <script src="script.js"></script>
+  <script>
+    window.addEventListener('load', function () {
+      window._gs = window._gs || function () {
+        (window._gs.q = window._gs.q || []).push(arguments);
+      };
+      window._gs('GSN-140714-N');
+
+      var script = document.createElement('script');
+      script.src = 'https://d1l6p2sc9645hc.cloudfront.net/gosquared.js';
+      script.async = true;
+      document.head.appendChild(script);
+    }, { once: true });
+  </script>
 </body>
 </html>
