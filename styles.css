@@ -416,6 +416,12 @@ body {
     margin: 0 auto;
 }
 
+.hero-cta {
+    display: inline-block;
+    margin-top: 1.25rem;
+    text-decoration: none;
+}
+
 .submit-btn:hover {
     background-color: var(--labour-dark-red);
     transform: translateY(-3px);
@@ -545,10 +551,6 @@ body {
     .social-link {
         width: 45px;
         height: 45px;
-    }
-
-    .social-link i {
-        font-size: 1.3rem;
     }
 
     .section-header {
