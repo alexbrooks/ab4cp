@@ -136,6 +136,29 @@ body {
     color: inherit;
 }
 
+.profile-card-page {
+    align-items: center;
+}
+
+.profile-card {
+    max-width: 640px;
+}
+
+.profile-social-links {
+    justify-content: center;
+    margin: 0 auto 1.75rem;
+}
+
+.profile-card-copy {
+    margin-top: 0;
+    padding-top: 1.75rem;
+    border-top: 3px solid var(--labour-red);
+}
+
+.profile-card-copy p {
+    margin-bottom: 0;
+}
+
 /* Contact Section */
 .contact-section {
     background-color: var(--card-bg);
